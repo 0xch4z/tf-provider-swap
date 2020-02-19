@@ -16,3 +16,6 @@ test: fmt
 build: test
 	mkdir -p $(DIST_DIR)
 	go build -o $(BIN) $(ENTRYPOINT)
+
+install: build
+	(cd cmd/${PROJECT}; go install)
