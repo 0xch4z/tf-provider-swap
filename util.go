@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
@@ -71,4 +72,12 @@ func AssertInTerraformWorkspace() {
 	} else if err == os.ErrNotExist || !stat.IsDir() {
 		log.Fatal(ErrNotTerraformWorkspace)
 	}
+}
+
+// runCommand runs a shell command and
+func runCommand(script string) error {
+	cmd := exec.Command("bash", "-c", script)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
 }
