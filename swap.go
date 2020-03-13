@@ -66,7 +66,7 @@ func UpdateProvider(name, bin string) error {
 
 	WriteLockFileOrDie(lockPath, lock)
 	color.Cyan("Successfully wrote lockfile...")
-	color.Green(`[*] Patched %s to "%s" [%s]1`, name, bin, hash)
+	color.Green(`[*] Patched %s to "%s" [%s]!`, name, bin, hash)
 
 	return nil
 }
